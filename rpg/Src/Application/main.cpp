@@ -1,6 +1,7 @@
 ﻿#include "main.h"
 
 #include "Scene/SceneManager.h"
+#include "Asset/AssetManager.h"
 
 // ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// ///// /////
 // エントリーポイント
@@ -212,6 +213,8 @@ bool Application::Init(int w, int h)
 	//===================================================================
 	// ゲーム固有の初期化
 	//===================================================================
+	C_AssetManager::Instance().ReadFile("AssetData.txt");
+
 	// 例えばカーソルを消したい場合
 	//ShowCursor(false);
 
