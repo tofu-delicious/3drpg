@@ -1,4 +1,4 @@
-﻿#include "GameScene.h"
+#include "GameScene.h"
 #include"../SceneManager.h"
 #include "../../GameObject/Ground/Ground.h"
 #include "../../GameObject/Charactor/Player/Player.h"
@@ -32,5 +32,6 @@ void GameScene::Init()
 	pCamera->Init();
 	pCamera->SetTarget(pPlayer);		//Playerを追従ターゲットに設定
 	pCamera->RegistHitObject(pGround);	//地面との当たり判定（めりこみ防止）
+	pPlayer->SetCamera(pCamera);		//プレイヤーにカメラをセット（向き参照用）
 	m_objList.push_back(pCamera);
 }

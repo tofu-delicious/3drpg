@@ -1,11 +1,9 @@
-﻿#include "Player.h"
+#include "Player.h"
 #include "../../../Asset/AssetManager.h"
 
 void C_Player::Init()
 {
 	m_spModel = C_AssetManager::Instance().GetModel("Player");
-
-	m_mWorld = Math::Matrix::CreateScale(5.0f);
 }
 
 void C_Player::Update()
@@ -33,15 +31,21 @@ void C_Player::MovePlayer()
 	if (GetAsyncKeyState('S')) { _moveVec.z = -1.0f; }
 
 	_moveVec.Normalize();
+
+	// カメラのY軸回転を取得して移動ベクトルをカメラ方向に変換
+	const auto _spCamera = m_wpCamera.lock();
+	if (_spCamera)
+	{
+		_moveVec = Math::Vector3::TransformNormal(_moveVec, _spCamera->GetRotationYMatrix());
+	}
+
 	_moveVec *= _moveSpd;
 	m_pos += _moveVec;
 }
 
 void C_Player::UpdateMatrix()
 {
-	Math::Matrix _scale = Math::Matrix::CreateScale(5.0f);
+	Math::Matrix _scale = Math::Matrix::CreateScale(17.0f);
 	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
 	m_mWorld = _scale * _trans;
 }
-
-

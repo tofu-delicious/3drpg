@@ -1,2 +1,2 @@
-Model Ground Asset/Models/Ground/Terrain.gltf
-Model Player Asset/Models/Player/Player.gltf
+Model Ground Asset/Models/Ground/Ground/Terrain.gltf
+Model Player Asset/Models/Player/Player/Player.gltf

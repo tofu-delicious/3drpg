@@ -1,5 +1,6 @@
-﻿#pragma once
+#pragma once
 #include "../CharaBase.h"
+#include "../../Camera/CameraBase.h"
 
 class C_Player :public C_CharaBase
 {
@@ -19,6 +20,14 @@ public:
 	//行列処理
 	void UpdateMatrix();
 
+	// カメラをセット
+	void SetCamera(const std::shared_ptr<CameraBase>& camera)
+	{
+		m_wpCamera = camera;
+	}
+
 private:
+
+	std::weak_ptr<CameraBase> m_wpCamera;
 
 };
