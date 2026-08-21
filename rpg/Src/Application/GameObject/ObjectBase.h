@@ -11,6 +11,13 @@ public:
 	virtual void DrawLit()			override{}
 	virtual void DrawSprite()		override{}
 
+	//================ ゲッター =================
+	Math::Vector3 GetPos()const override { return m_pos; }
+
+	//================ セッター =================
+	void SetPos(float a_posX = 0.0f, float a_posY = 0.0f, float a_posZ = 0.0f) { m_pos = Math::Vector3{ a_posX,a_posY,a_posZ }; }	//各軸ごとに値を指定したいとき
+	void SetPos(const Math::Vector3& a_pos) { m_pos = a_pos; }	//X・Y・Z軸一気に座標を指定させたいとき
+
 protected:
 
 	//============= インスタンス ================
