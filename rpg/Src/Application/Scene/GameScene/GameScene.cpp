@@ -1,8 +1,9 @@
-#include "GameScene.h"
+﻿#include "GameScene.h"
 #include"../SceneManager.h"
 #include "../../GameObject/Ground/Ground.h"
 #include "../../GameObject/Charactor/Player/Player.h"
 #include "../../GameObject/Camera/TPSCamera/TPSCamera.h"
+#include "../../GameObject/Charactor/Enemy/RadicalEnemy/RadicalEnemy.h"
 
 void GameScene::Event()
 {
@@ -26,6 +27,11 @@ void GameScene::Init()
 	auto pPlayer = std::make_shared<C_Player>();
 	pPlayer->Init();
 	m_objList.push_back(pPlayer);
+
+	//敵
+	auto pRadicalEnemy = std::make_shared<C_RadicalEnemy>();
+	pRadicalEnemy->Init();
+	m_objList.push_back(pRadicalEnemy);
 
 	//TPSカメラ
 	auto pCamera = std::make_shared<TPSCamera>();

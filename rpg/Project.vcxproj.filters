@@ -100,6 +100,12 @@
     <Filter Include="Src\Application\GameObject\Charactor\Enemy">
       <UniqueIdentifier>{b595f7a1-699e-4eef-8d5c-26137c0af939}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\GameObject\Charactor\Enemy\ElementEnemy">
+      <UniqueIdentifier>{0a63f3d1-33f7-48ed-b5ef-fae0ba22dd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy">
+      <UniqueIdentifier>{9bf89245-d6ed-4724-88c9-ae2071d98c58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -297,6 +303,15 @@
     <ClInclude Include="Src\Application\GameObject\Charactor\Player\Player.h">
       <Filter>Src\Application\GameObject\Charactor\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\EnemyBase.h">
+      <Filter>Src\Application\GameObject\Charactor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\ElementEnemy\ElementEnemy.h">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\ElementEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.h">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\RadicalEnemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -463,6 +478,15 @@
     </ClCompile>
     <ClCompile Include="Src\Application\GameObject\Charactor\Player\Player.cpp">
       <Filter>Src\Application\GameObject\Charactor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\EnemyBase.cpp">
+      <Filter>Src\Application\GameObject\Charactor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\ElementEnemy\ElementEnemy.cpp">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\ElementEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.cpp">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\RadicalEnemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

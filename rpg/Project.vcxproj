@@ -277,6 +277,9 @@
     <ClInclude Include="Src\Application\GameObject\Camera\CameraBase.h" />
     <ClInclude Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.h" />
     <ClInclude Include="Src\Application\GameObject\Charactor\CharaBase.h" />
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\ElementEnemy\ElementEnemy.h" />
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\EnemyBase.h" />
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.h" />
     <ClInclude Include="Src\Application\GameObject\Charactor\Player\Player.h" />
     <ClInclude Include="Src\Application\GameObject\Ground\Ground.h" />
     <ClInclude Include="Src\Application\GameObject\ObjectBase.h" />
@@ -337,6 +340,9 @@
     <ClCompile Include="Src\Application\GameObject\Camera\CameraBase.cpp" />
     <ClCompile Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.cpp" />
     <ClCompile Include="Src\Application\GameObject\Charactor\CharaBase.cpp" />
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\ElementEnemy\ElementEnemy.cpp" />
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\EnemyBase.cpp" />
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.cpp" />
     <ClCompile Include="Src\Application\GameObject\Charactor\Player\Player.cpp" />
     <ClCompile Include="Src\Application\GameObject\Ground\Ground.cpp" />
     <ClCompile Include="Src\Application\GameObject\ObjectBase.cpp" />
