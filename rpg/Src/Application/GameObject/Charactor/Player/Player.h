@@ -13,6 +13,12 @@ public:
 	void Update()	override;
 	void DrawLit()	override;
 
+	//移動処理
+	void MovePlayer();
+
+	//行列処理
+	void UpdateMatrix();
+
 private:
 
 };
