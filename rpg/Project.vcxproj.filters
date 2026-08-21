@@ -91,6 +91,9 @@
     <Filter Include="Src\Application\Asset">
       <UniqueIdentifier>{dfebdab4-67e5-4b89-8bca-cf1a40d2c2be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\GameObject\Ground">
+      <UniqueIdentifier>{20f050f2-f980-4d88-8781-79daece74e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -279,6 +282,12 @@
     <ClInclude Include="Src\Application\Asset\AssetManager.h">
       <Filter>Src\Application\Asset</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\Ground\Ground.h">
+      <Filter>Src\Application\GameObject\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\ObjectBase.h">
+      <Filter>Src\Application\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -436,6 +445,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Asset\AssetManager.cpp">
       <Filter>Src\Application\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\Ground\Ground.cpp">
+      <Filter>Src\Application\GameObject\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\ObjectBase.cpp">
+      <Filter>Src\Application\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
