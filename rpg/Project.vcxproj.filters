@@ -106,6 +106,18 @@
     <Filter Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy">
       <UniqueIdentifier>{9bf89245-d6ed-4724-88c9-ae2071d98c58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Kanji">
+      <UniqueIdentifier>{3c652ef3-32ad-437d-8358-a51f667a06c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiDefine">
+      <UniqueIdentifier>{fd30617e-4d87-4afc-932c-b0134043fdc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiInventory">
+      <UniqueIdentifier>{3f00c9a8-e746-44f7-9e83-34d13fb5dca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiRecipe">
+      <UniqueIdentifier>{dc134015-bb72-4391-b2cf-f8fc7d1dccb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -312,6 +324,15 @@
     <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.h">
       <Filter>Src\Application\GameObject\Charactor\Enemy\RadicalEnemy</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.h">
+      <Filter>Src\Application\Kanji\KanjiDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.h">
+      <Filter>Src\Application\Kanji\KanjiInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.h">
+      <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -487,6 +508,15 @@
     </ClCompile>
     <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\RadicalEnemy\RadicalEnemy.cpp">
       <Filter>Src\Application\GameObject\Charactor\Enemy\RadicalEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.cpp">
+      <Filter>Src\Application\Kanji\KanjiDefine</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.cpp">
+      <Filter>Src\Application\Kanji\KanjiInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.cpp">
+      <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
