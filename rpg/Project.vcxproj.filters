@@ -118,6 +118,15 @@
     <Filter Include="Src\Application\Kanji\KanjiRecipe">
       <UniqueIdentifier>{dc134015-bb72-4391-b2cf-f8fc7d1dccb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiStock">
+      <UniqueIdentifier>{f3843653-fac1-41b5-931d-215f01d2fb09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiComboManager">
+      <UniqueIdentifier>{b2c5ec6a-11fa-4421-be80-2c2d4d0e2a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Kanji\KanjiLevelManager">
+      <UniqueIdentifier>{d379e6b1-7394-45cf-9086-3bc28786a2cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -333,6 +342,15 @@
     <ClInclude Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.h">
       <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiStock\KanjiStock.h">
+      <Filter>Src\Application\Kanji\KanjiStock</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.h">
+      <Filter>Src\Application\Kanji\KanjiComboManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.h">
+      <Filter>Src\Application\Kanji\KanjiLevelManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -517,6 +535,15 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.cpp">
       <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiStock\KanjiStock.cpp">
+      <Filter>Src\Application\Kanji\KanjiStock</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.cpp">
+      <Filter>Src\Application\Kanji\KanjiComboManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.cpp">
+      <Filter>Src\Application\Kanji\KanjiLevelManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
