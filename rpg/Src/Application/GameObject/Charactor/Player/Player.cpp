@@ -59,3 +59,26 @@ void C_Player::UpdateMatrix()
 	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
 	m_mWorld = _scale * _rot * _trans;
 }
+
+bool C_Player::PickupKanji(KanjiID a_kanji)
+{
+	//手持ちストックへの追加を試みる
+	return m_kanjiStock.AddKanji(a_kanji);
+}
+
+void C_Player::UseKanjiStock(int a_index)
+{
+	//手持ちストックから該当漢字を取り出す（同時に配列からは削除）
+	KanjiID _used = m_kanjiStock.UseKanji(a_index);
+
+	//取り出しに失敗（範囲外指定等）した場合は何もせず終了
+	if (_used == KanjiID::None)
+	{
+		return;
+	}
+
+	//使用した漢字を「使用済み」として履歴に記録
+	m_kanjiUsageHistory.MarkUsed(_used);
+
+	//ここにコンボ更新・属性ダメージ・レベル効果発動を呼び出す
+}
