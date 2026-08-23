@@ -2,4 +2,7 @@ Model Ground Asset/Models/Ground/Ground/Terrain.gltf
 Model Player Asset/Models/Player/Player/Player.gltf
 Model RadicalEnemy Asset/Models/RadicalEnemy/RadicalEnemy/RadicalEnemy.gltf
 Model ElementEnemy Asset/Models/ElementEnemy/ElementEnemy/ElementEnemy.gltf
-Model Hi Asset/Models/Kanji/Kanji/Hi.gltf
+Model Kanji_Hi Asset/Models/Kanji/Kanji/Hi.gltf
+Model Kanji_Mizu Asset/Models/Kanji/Kanji/Mizu.gltf
+Model Kanji_Ki Asset/Models/Kanji/Kanji/Ki,gltf
+Model Kanji_Tsuki Asset/Models/kanji/Kanji/Tsuki.gltf

@@ -39,7 +39,7 @@ void C_RadicalEnemy::OnHit()
 	//撃破時にドロップする漢字IDをセット
 	_pKanjiDropItem->SetKanjiID(OnDefeated());
 	//自身が消えた座標を生成するアイテムの座標として指定
-	_pKanjiDropItem->SetPos(GetPos());
+	_pKanjiDropItem->SetPos(Math::Vector3{GetPos().x,GetPos().y + _pKanjiDropItem.get()->KANJI_SPAWN_OFFSET_Y,GetPos().z});
 	//m_objListに追加
 	_pKanjiDropItem->Init();
 	SceneManager::Instance().AddObject(_pKanjiDropItem);
