@@ -285,10 +285,13 @@
     <ClInclude Include="Src\Application\GameObject\ObjectBase.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.h" />
+    <ClInclude Include="Src\Application\Kanji\KanjiDropSelector\KanjiDropSelector.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.h" />
+    <ClInclude Include="Src\Application\Kanji\KanjiMasterTable\KanjiMasterTable.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiStock\KanjiStock.h" />
+    <ClInclude Include="Src\Application\Kanji\KanjiUsageHistory\KanjiUsageHistory.h" />
     <ClInclude Include="Src\Application\main.h" />
     <ClInclude Include="Src\Application\Scene\BaseScene\BaseScene.h" />
     <ClInclude Include="Src\Application\Scene\GameScene\GameScene.h" />
@@ -354,10 +357,13 @@
     <ClCompile Include="Src\Application\GameObject\ObjectBase.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.cpp" />
+    <ClCompile Include="Src\Application\Kanji\KanjiDropSelector\KanjiDropSelector.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.cpp" />
+    <ClCompile Include="Src\Application\Kanji\KanjiMasterTable\KanjiMasterTable.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiStock\KanjiStock.cpp" />
+    <ClCompile Include="Src\Application\Kanji\KanjiUsageHistory\KanjiUsageHistory.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
     <ClCompile Include="Src\Application\Scene\BaseScene\BaseScene.cpp" />
     <ClCompile Include="Src\Application\Scene\GameScene\GameScene.cpp" />

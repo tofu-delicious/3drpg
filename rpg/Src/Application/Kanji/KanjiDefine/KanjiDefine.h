@@ -4,7 +4,10 @@
 enum class KanjiID
 {
 	None = -1,
-	Tou,			//灯
+	Hi,				//火
+	Mizu,			//水
+	Wood,			//木
+	Tsuki,			//月
 };
 
 //漢字の属性
@@ -17,12 +20,12 @@ enum class KanjiAttribute
 	//今後追加・・・
 };
 
-//漢字データ
+//漢字1つ分のマスタデータ
 struct KanjiMasterData
 {
 	KanjiID			id;
 	KanjiAttribute	attribute;	//Noneなら無属性漢字
-	int				baseScore;	//スコア値
+	int				baseScore;	//スコア計算のベース値
 };
 
 //部首（※未使用）

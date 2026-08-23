@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "../CharaBase.h"
 #include "../../../Kanji/KanjiDefine/KanjiDefine.h"
+#include "../../../Kanji/KanjiUsageHistory/KanjiUsageHistory.h"
 
 class C_EnemyBase:public C_CharaBase
 {
@@ -8,19 +9,19 @@ public:
 	C_EnemyBase(){}
 	virtual ~C_EnemyBase()		override{}
 
-	//敵に刻まれた漢字をセット
-	void SetBodyKanji(KanjiID a_kanji) { m_bodyKanji = a_kanji; }
+	//各敵がドロップする漢字をプレイヤーの使用履歴を参照して出現時に決定する
+	void DecideBodyKanji(const C_KanjiUsageHistory& a_history);
 
-	//敵に刻まれた漢字を取得
+	//各敵がドロップする漢字の内容を取得
 	KanjiID GetBodyKanji() const { return m_bodyKanji; }
 
-	//弱点属性をセット
-	void SetWeakAttribute(KanjiAttribute a_attr) { m_weakAttribute = a_attr; }
+	//弱点属性セット
+	void SetWeekAttribute(KanjiAttribute a_attr) { m_weakAttribute = a_attr; }
 
-	//弱点属性を取得
+	//弱点属性情報の取得
 	KanjiAttribute GetWeakAttribute() const { return m_weakAttribute; }
 
-	//漢字ドロップ処理
+	//敵撃破時、ドロップする漢字を返す
 	virtual KanjiID OnDefeated() { return m_bodyKanji; }
 
 private:
