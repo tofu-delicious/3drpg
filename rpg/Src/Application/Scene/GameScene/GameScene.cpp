@@ -33,12 +33,8 @@ void GameScene::Init()
 	//敵（部首）
 	auto pRadicalEnemy = std::make_shared<C_RadicalEnemy>();
 	pRadicalEnemy->Init();
+	pRadicalEnemy->DecideBodyKanji(pPlayer->GetKanjiUsageHistory());
 	m_objList.push_back(pRadicalEnemy);
-
-	//敵（つくり）
-	auto pElementEnemy = std::make_shared<C_ElementEnemy>();
-	pElementEnemy->Init();
-	m_objList.push_back(pElementEnemy);
 
 	//TPSカメラ
 	auto pCamera = std::make_shared<TPSCamera>();

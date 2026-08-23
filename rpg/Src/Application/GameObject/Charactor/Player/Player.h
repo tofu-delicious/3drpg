@@ -30,6 +30,9 @@ public:
 	//手持ちの指定indexの漢字を使用する処理
 	void UseKanjiStock(int a_index);
 
+	//現在の漢字使用履歴の取得処理
+	const C_KanjiUsageHistory& GetKanjiUsageHistory() const { return m_kanjiUsageHistory; }
+
 	//現在のスコア倍率の取得処理
 	float GetKanjiScoreMultiplier()const { return m_kanjiComboManager.GetScoreMultiplier(); }
 

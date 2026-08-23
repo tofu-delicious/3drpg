@@ -24,8 +24,9 @@ enum class KanjiAttribute
 struct KanjiMasterData
 {
 	KanjiID			id;
-	KanjiAttribute	attribute;	//Noneなら無属性漢字
-	int				baseScore;	//スコア計算のベース値
+	KanjiAttribute	attribute;		//Noneなら無属性漢字
+	int				baseScore;		//スコア計算のベース値
+	std::string		modelKeyword;	//AssetManagerに登録されている3Dモデルのキーワード
 };
 
 //部首（※未使用）

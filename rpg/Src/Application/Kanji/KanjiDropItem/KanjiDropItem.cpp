@@ -1,9 +1,17 @@
 ﻿#include "KanjiDropItem.h"
 #include ".././../Asset/AssetManager.h"
+#include "../KanjiMasterTable/KanjiMasterTable.h"
 
 void C_KanjiDropItem::Init()
 {
-	m_spModel = C_AssetManager::Instance().GetModel("Hi");
+	//このアイテムが持つKanjiIDから、対応するマスタデータを検索
+	const KanjiMasterData* _pMaster = FindKanjiMaster(m_kanjiID);
+
+	//マスタに存在しないKanjiIDが指定された場合は何もしない
+	if (!_pMaster) return;
+
+	//マスタに登録されたモデルキーワードを使ってモデルを取得
+	m_spModel = C_AssetManager::Instance().GetModel(_pMaster->modelKeyword);
 
 	m_mWorld = Math::Matrix::CreateTranslation(m_pos);
 }
@@ -31,6 +39,8 @@ void C_KanjiDropItem::Update()
 
 void C_KanjiDropItem::DrawLit()
 {
+	if (!m_spModel)return;
+
 	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
 }
 
