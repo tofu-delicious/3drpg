@@ -80,5 +80,8 @@ void C_Player::UseKanjiStock(int a_index)
 	//使用した漢字を「使用済み」として履歴に記録
 	m_kanjiUsageHistory.MarkUsed(_used);
 
+	//使用した漢字をコンボ管理へ渡し、コンボ数とスコア倍率を更新
+	m_kanjiComboManager.OnUseKanji(_used);
+
 	//ここにコンボ更新・属性ダメージ・レベル効果発動を呼び出す
 }

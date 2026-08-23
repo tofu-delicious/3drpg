@@ -3,6 +3,7 @@
 #include "../../Camera/CameraBase.h"
 #include "../../../Kanji/KanjiStock/KanjiStock.h"
 #include "../../../Kanji/KanjiUsageHistory/KanjiUsageHistory.h"
+#include "../../../Kanji/KanjiComboManager/KanjiComboManager.h"
 
 class C_Player :public C_CharaBase
 {
@@ -28,7 +29,10 @@ public:
 	//手持ちの指定indexの漢字を使用する処理
 	void UseKanjiStock(int a_index);
 
-	// カメラをセット
+	//現在のスコア倍率の取得処理
+	float GetKanjiScoreMultiplier()const { return m_kanjiComboManager.GetScoreMultiplier(); }
+
+	//カメラをセット
 	void SetCamera(const std::shared_ptr<CameraBase>& camera)
 	{
 		m_wpCamera = camera;
@@ -44,4 +48,6 @@ private:
 	//このプレイでの漢字使用履歴（ドロップ抽選の「未使用優先」判定に使う）を保持するメンバ変数
 	C_KanjiUsageHistory m_kanjiUsageHistory;
 
+	//多様性コンボとスコア倍率を管理するメンバ変数
+	C_KanjiComboManager m_kanjiComboManager;
 };
