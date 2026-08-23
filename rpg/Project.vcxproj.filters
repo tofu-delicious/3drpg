@@ -112,12 +112,6 @@
     <Filter Include="Src\Application\Kanji\KanjiDefine">
       <UniqueIdentifier>{fd30617e-4d87-4afc-932c-b0134043fdc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Kanji\KanjiInventory">
-      <UniqueIdentifier>{3f00c9a8-e746-44f7-9e83-34d13fb5dca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Src\Application\Kanji\KanjiRecipe">
-      <UniqueIdentifier>{dc134015-bb72-4391-b2cf-f8fc7d1dccb3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Kanji\KanjiStock">
       <UniqueIdentifier>{f3843653-fac1-41b5-931d-215f01d2fb09}</UniqueIdentifier>
     </Filter>
@@ -345,12 +339,6 @@
     <ClInclude Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.h">
       <Filter>Src\Application\Kanji\KanjiDefine</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.h">
-      <Filter>Src\Application\Kanji\KanjiInventory</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.h">
-      <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Kanji\KanjiStock\KanjiStock.h">
       <Filter>Src\Application\Kanji\KanjiStock</Filter>
     </ClInclude>
@@ -547,12 +535,6 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.cpp">
       <Filter>Src\Application\Kanji\KanjiDefine</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Kanji\KanjiInventory\KanjiInventory.cpp">
-      <Filter>Src\Application\Kanji\KanjiInventory</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Application\Kanji\KanjiRecipe\KanjiRecipeTable.cpp">
-      <Filter>Src\Application\Kanji\KanjiRecipe</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Kanji\KanjiStock\KanjiStock.cpp">
       <Filter>Src\Application\Kanji\KanjiStock</Filter>
