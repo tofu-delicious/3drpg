@@ -11,11 +11,12 @@ class C_Player :public C_CharaBase
 public:
 
 	C_Player(){}
-	~C_Player()		override{}
+	~C_Player()			override{}
 
-	void Init()		override;
-	void Update()	override;
-	void DrawLit()	override;
+	void Init()			override;
+	void Update()		override;
+	void PostUpdate()	override;
+	void DrawLit()		override;
 
 	//移動処理
 	void MovePlayer();
@@ -31,6 +32,9 @@ public:
 
 	//現在のスコア倍率の取得処理
 	float GetKanjiScoreMultiplier()const { return m_kanjiComboManager.GetScoreMultiplier(); }
+
+	//スフィア判定
+	void CheckSphere();
 
 	//カメラをセット
 	void SetCamera(const std::shared_ptr<CameraBase>& camera)

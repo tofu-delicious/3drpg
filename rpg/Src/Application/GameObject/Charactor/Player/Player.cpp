@@ -1,9 +1,13 @@
 ﻿#include "Player.h"
 #include "../../../Asset/AssetManager.h"
+#include "../../../Scene/SceneManager.h"
 
 void C_Player::Init()
 {
 	m_spModel = C_AssetManager::Instance().GetModel("Player");
+
+	//デバッグスフィア表示
+	if (!m_pDebugWire) m_pDebugWire = std::make_unique<KdDebugWireFrame>();
 }
 
 void C_Player::Update()
@@ -11,6 +15,11 @@ void C_Player::Update()
 	MovePlayer();		//移動処理
 
 	UpdateMatrix();		//行列処理
+}
+
+void C_Player::PostUpdate()
+{
+	CheckSphere();		//スフィア判定
 }
 
 void C_Player::DrawLit()
@@ -84,4 +93,52 @@ void C_Player::UseKanjiStock(int a_index)
 	m_kanjiComboManager.OnUseKanji(_used);
 
 	//ここにコンボ更新・属性ダメージ・レベル効果発動を呼び出す
+}
+
+void C_Player::CheckSphere()
+{
+	//スフィア判定用の変数を宣言
+	KdCollider::SphereInfo sphere;
+	sphere.m_sphere.Center = m_pos + Math::Vector3(0, 2.3f, 0); //原点が足元なので↑に0.5上げる
+	sphere.m_sphere.Radius = 0.3f;
+	sphere.m_type = KdCollider::TypeDamage;
+
+	//デバッグ
+	m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius);
+
+	//➀球に当たったオブジェクト情報を格納するリスト
+	std::list<KdCollider::CollisionResult> retSphereList;
+
+	//➁全オブジェクトと当たり判定をする
+	for (auto& obj : SceneManager::Instance().GetObjList())
+	{
+		//Intersects（当たり判定を行う関数）
+		obj->Intersects(sphere, &retSphereList);
+	}
+
+	//球に当たったリストから一番近いオブジェクトを探す
+	float maxOverLap = 0.0f;
+	bool isHit = false;
+	Math::Vector3 hitDir;	//当たった方向を格納する変数
+	for (auto& ret : retSphereList)
+	{
+		//球にめり込んだ長さが一番長いものを探す
+		if (maxOverLap < ret.m_overlapDistance)
+		{
+			//更新
+			maxOverLap = ret.m_overlapDistance;
+			hitDir = ret.m_hitDir;
+			isHit = true;
+		}
+	}
+	if (isHit == true)
+	{
+		//Z方向への押し出し無効
+		hitDir.y = 0.0f;
+
+		//方向ベクトルは長さ1
+		hitDir.Normalize();
+
+		m_pos += hitDir * maxOverLap;
+	}
 }

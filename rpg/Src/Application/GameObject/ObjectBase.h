@@ -8,6 +8,7 @@ public:
 
 	virtual void Init()				override{}
 	virtual void Update()			override{}
+	virtual void PostUpdate()		override{}
 	virtual void DrawLit()			override{}
 	virtual void DrawSprite()		override{}
 
