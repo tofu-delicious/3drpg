@@ -285,6 +285,7 @@
     <ClInclude Include="Src\Application\GameObject\ObjectBase.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.h" />
+    <ClInclude Include="Src\Application\Kanji\KanjiDropItem\KanjiDropItem.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiDropSelector\KanjiDropSelector.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.h" />
     <ClInclude Include="Src\Application\Kanji\KanjiMasterTable\KanjiMasterTable.h" />
@@ -355,6 +356,7 @@
     <ClCompile Include="Src\Application\GameObject\ObjectBase.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiComboManager\KanjiComboManager.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiDefine\KanjiDefine.cpp" />
+    <ClCompile Include="Src\Application\Kanji\KanjiDropItem\KanjiDropItem.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiDropSelector\KanjiDropSelector.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiLevelManager\KanjiLevelManager.cpp" />
     <ClCompile Include="Src\Application\Kanji\KanjiMasterTable\KanjiMasterTable.cpp" />

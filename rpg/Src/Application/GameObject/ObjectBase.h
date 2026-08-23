@@ -12,6 +12,9 @@ public:
 	virtual void DrawLit()			override{}
 	virtual void DrawSprite()		override{}
 
+	//衝突時に実行する関数
+	virtual void OnHit()			override{}
+
 	//================ ゲッター =================
 	Math::Vector3 GetPos()const override { return m_pos; }
 

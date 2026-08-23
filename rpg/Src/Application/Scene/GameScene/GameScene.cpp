@@ -5,6 +5,7 @@
 #include "../../GameObject/Camera/TPSCamera/TPSCamera.h"
 #include "../../GameObject/Charactor/Enemy/RadicalEnemy/RadicalEnemy.h"
 #include "../../GameObject/Charactor/Enemy/ElementEnemy/ElementEnemy.h"
+#include "../../Kanji/KanjiDropItem/KanjiDropItem.h"
 
 void GameScene::Event()
 {
@@ -46,4 +47,9 @@ void GameScene::Init()
 	pCamera->RegistHitObject(pGround);	//地面との当たり判定（めりこみ防止）
 	pPlayer->SetCamera(pCamera);		//プレイヤーにカメラをセット（向き参照用）
 	m_objList.push_back(pCamera);
+
+	//================ テスト ====================
+	/*auto pKanji = std::make_shared<C_KanjiDropItem>();
+	pKanji->Init();
+	m_objList.push_back(pKanji);*/
 }

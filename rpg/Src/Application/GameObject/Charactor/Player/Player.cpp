@@ -112,33 +112,47 @@ void C_Player::CheckSphere()
 	//➁全オブジェクトと当たり判定をする
 	for (auto& obj : SceneManager::Instance().GetObjList())
 	{
-		//Intersects（当たり判定を行う関数）
-		obj->Intersects(sphere, &retSphereList);
-	}
+		//Intersects（当たり判定を行う関数）：実際に当たっていればtrueが返る
+		bool _isHit = obj->Intersects(sphere, &retSphereList);
 
-	//球に当たったリストから一番近いオブジェクトを探す
-	float maxOverLap = 0.0f;
-	bool isHit = false;
-	Math::Vector3 hitDir;	//当たった方向を格納する変数
-	for (auto& ret : retSphereList)
-	{
-		//球にめり込んだ長さが一番長いものを探す
-		if (maxOverLap < ret.m_overlapDistance)
+		//実際に球と衝突した場合のみ、相手側のOnHitを呼び出す
+		if (_isHit)
 		{
-			//更新
-			maxOverLap = ret.m_overlapDistance;
-			hitDir = ret.m_hitDir;
-			isHit = true;
+			obj->OnHit();
 		}
 	}
-	if (isHit == true)
-	{
-		//Z方向への押し出し無効
-		hitDir.y = 0.0f;
 
-		//方向ベクトルは長さ1
-		hitDir.Normalize();
+	//➁全オブジェクトと当たり判定をする
+	//for (auto& obj : SceneManager::Instance().GetObjList())
+	//{
+	//	//Intersects（当たり判定を行う関数）
+	//	obj->Intersects(sphere, &retSphereList);
+	//	obj->OnHit();
+	//}
 
-		m_pos += hitDir * maxOverLap;
-	}
+	////球に当たったリストから一番近いオブジェクトを探す
+	//float maxOverLap = 0.0f;
+	//bool isHit = false;
+	//Math::Vector3 hitDir;	//当たった方向を格納する変数
+	//for (auto& ret : retSphereList)
+	//{
+	//	//球にめり込んだ長さが一番長いものを探す
+	//	if (maxOverLap < ret.m_overlapDistance)
+	//	{
+	//		//更新
+	//		maxOverLap = ret.m_overlapDistance;
+	//		hitDir = ret.m_hitDir;
+	//		isHit = true;
+	//	}
+	//}
+	//if (isHit == true)
+	//{
+	//	//Z方向への押し出し無効
+	//	hitDir.y = 0.0f;
+
+	//	//方向ベクトルは長さ1
+	//	hitDir.Normalize();
+
+	//	m_pos += hitDir * maxOverLap;
+	//}
 }

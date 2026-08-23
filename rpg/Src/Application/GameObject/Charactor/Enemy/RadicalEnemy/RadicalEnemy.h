@@ -11,6 +11,8 @@ public:
 	void Update()			override;
 	void DrawLit()			override;
 
+	void OnHit()			override;
+
 private:
 
 };
