@@ -133,6 +133,9 @@
     <Filter Include="Src\Application\Kanji\KanjiDropItem">
       <UniqueIdentifier>{cf774131-7ed4-4199-b14c-988d3048537d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner">
+      <UniqueIdentifier>{e485dfc5-1f76-419d-a40b-706e9015b3ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -363,6 +366,9 @@
     <ClInclude Include="Src\Application\Kanji\KanjiDropItem\KanjiDropItem.h">
       <Filter>Src\Application\Kanji\KanjiDropItem</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner\EnemySpawner.h">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\EnemySpawner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -562,6 +568,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Kanji\KanjiDropItem\KanjiDropItem.cpp">
       <Filter>Src\Application\Kanji\KanjiDropItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner\EnemySpawner.cpp">
+      <Filter>Src\Application\GameObject\Charactor\Enemy\EnemySpawner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,9 +6,8 @@
 void C_RadicalEnemy::Init()
 {
 	m_spModel = C_AssetManager::Instance().GetModel("RadicalEnemy");
-	m_pos = Math::Vector3{ -5.0f,0.0f,10.0f };
-
-	m_mWorld = Math::Matrix::CreateScale(17.0f) * Math::Matrix::CreateTranslation(m_pos);
+	
+	m_mWorld = Math::Matrix::Identity;
 
 	//デバッグスフィア表示
 	if (!m_pDebugWire) m_pDebugWire = std::make_unique<KdDebugWireFrame>();
@@ -22,7 +21,12 @@ void C_RadicalEnemy::Init()
 }
 
 void C_RadicalEnemy::Update()
-{}
+{
+	//行列を更新しないと、初期位置にずっと敵が生成されてしまう
+	Math::Matrix _scale = Math::Matrix::CreateScale(17.0f);
+	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
+	m_mWorld = _scale * _trans;
+}
 
 void C_RadicalEnemy::DrawLit()
 {

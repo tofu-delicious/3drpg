@@ -3,8 +3,7 @@
 #include "../../GameObject/Ground/Ground.h"
 #include "../../GameObject/Charactor/Player/Player.h"
 #include "../../GameObject/Camera/TPSCamera/TPSCamera.h"
-#include "../../GameObject/Charactor/Enemy/RadicalEnemy/RadicalEnemy.h"
-#include "../../GameObject/Charactor/Enemy/ElementEnemy/ElementEnemy.h"
+#include "../../GameObject/Charactor/Enemy/EnemySpawner/EnemySpawner.h"
 #include "../../Kanji/KanjiDropItem/KanjiDropItem.h"
 
 void GameScene::Event()
@@ -30,11 +29,11 @@ void GameScene::Init()
 	pPlayer->Init();
 	m_objList.push_back(pPlayer);
 
-	//敵（部首）
-	auto pRadicalEnemy = std::make_shared<C_RadicalEnemy>();
-	pRadicalEnemy->Init();
-	pRadicalEnemy->DecideBodyKanji(pPlayer->GetKanjiUsageHistory());
-	m_objList.push_back(pRadicalEnemy);
+	//敵出現処理（60秒間、5秒間隔でランダムな座標に敵を出現させ続ける）
+	auto pEnemySpawner = std::make_shared<C_EnemySpawner>();
+	pEnemySpawner->Init();
+	pEnemySpawner->SetPlayer(pPlayer);
+	m_objList.push_back(pEnemySpawner);
 
 	//TPSカメラ
 	auto pCamera = std::make_shared<TPSCamera>();
