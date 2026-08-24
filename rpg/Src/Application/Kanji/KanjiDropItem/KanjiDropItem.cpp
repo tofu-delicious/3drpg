@@ -14,6 +14,10 @@ void C_KanjiDropItem::Init()
 	m_spModel = C_AssetManager::Instance().GetModel(_pMaster->modelKeyword);
 
 	m_mWorld = Math::Matrix::CreateTranslation(m_pos);
+
+	//プレイヤーとの衝突判定の当たられる側の処理
+	m_pCollider = std::make_unique<KdCollider>();
+	m_pCollider->RegisterCollisionShape("KanjiDropItem", Math::Vector3::Zero, KANJI_PICKUP_RADIUS, KdCollider::Type::TypeDamage);
 }
 
 void C_KanjiDropItem::Update()
@@ -42,5 +46,10 @@ void C_KanjiDropItem::DrawLit()
 	if (!m_spModel)return;
 
 	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
+}
+
+void C_KanjiDropItem::OnHit()
+{
+	m_isExpired = true;
 }
 

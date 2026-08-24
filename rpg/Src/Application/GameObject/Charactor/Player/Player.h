@@ -33,11 +33,17 @@ public:
 	//現在の漢字使用履歴の取得処理
 	const C_KanjiUsageHistory& GetKanjiUsageHistory() const { return m_kanjiUsageHistory; }
 
+	//現在の手持ち漢字ストック一覧をUI表示のために外部公開する取得処理
+	const std::vector<KanjiID>& GetKanjiStockList() const { return m_kanjiStock.GetStockList(); }
+
 	//現在のスコア倍率の取得処理
 	float GetKanjiScoreMultiplier()const { return m_kanjiComboManager.GetScoreMultiplier(); }
 
-	//スフィア判定
+	//スフィア判定（敵への攻撃判定）
 	void CheckSphere();
+
+	//漢字ドロップアイテムの拾得判定を追加
+	void CheckKanjiPickup();
 
 	//カメラをセット
 	void SetCamera(const std::shared_ptr<CameraBase>& camera)

@@ -1,6 +1,7 @@
 ﻿#include "Player.h"
 #include "../../../Asset/AssetManager.h"
 #include "../../../Scene/SceneManager.h"
+#include "../../../Kanji/KanjiDropItem/KanjiDropItem.h"
 
 void C_Player::Init()
 {
@@ -20,6 +21,8 @@ void C_Player::Update()
 void C_Player::PostUpdate()
 {
 	CheckSphere();		//スフィア判定
+	
+	CheckKanjiPickup();	//漢字ドロップアイテムの拾得判定
 }
 
 void C_Player::DrawLit()
@@ -115,44 +118,44 @@ void C_Player::CheckSphere()
 		//Intersects（当たり判定を行う関数）：実際に当たっていればtrueが返る
 		bool _isHit = obj->Intersects(sphere, &retSphereList);
 
-		//実際に球と衝突した場合のみ、相手側のOnHitを呼び出す
 		if (_isHit)
 		{
 			obj->OnHit();
 		}
 	}
+}
 
-	//➁全オブジェクトと当たり判定をする
-	//for (auto& obj : SceneManager::Instance().GetObjList())
-	//{
-	//	//Intersects（当たり判定を行う関数）
-	//	obj->Intersects(sphere, &retSphereList);
-	//	obj->OnHit();
-	//}
+void C_Player::CheckKanjiPickup()
+{
+	//拾得判定用の変数を宣言
+	KdCollider::SphereInfo sphere;
+	sphere.m_sphere.Center = m_pos + Math::Vector3{ 0,0.5f,0 };
+	sphere.m_sphere.Radius = 0.8f;
+	sphere.m_type = KdCollider::TypeDamage;
 
-	////球に当たったリストから一番近いオブジェクトを探す
-	//float maxOverLap = 0.0f;
-	//bool isHit = false;
-	//Math::Vector3 hitDir;	//当たった方向を格納する変数
-	//for (auto& ret : retSphereList)
-	//{
-	//	//球にめり込んだ長さが一番長いものを探す
-	//	if (maxOverLap < ret.m_overlapDistance)
-	//	{
-	//		//更新
-	//		maxOverLap = ret.m_overlapDistance;
-	//		hitDir = ret.m_hitDir;
-	//		isHit = true;
-	//	}
-	//}
-	//if (isHit == true)
-	//{
-	//	//Z方向への押し出し無効
-	//	hitDir.y = 0.0f;
+	//球に当たったオブジェクト情報を格納するリスト
+	std::list<KdCollider::CollisionResult> _retSphereList;
 
-	//	//方向ベクトルは長さ1
-	//	hitDir.Normalize();
+	//全オブジェクトと当たり判定
+	for (auto& obj : SceneManager::Instance().GetObjList())
+	{
+		bool _isHit = obj->Intersects(sphere, &_retSphereList);
 
-	//	m_pos += hitDir * maxOverLap;
-	//}
+		//当たっていなければ次のオブジェクトへ
+		if (!_isHit) { continue; }
+
+		//当たったオブジェクトが漢字ドロップアイテムかどうかをダウンキャストして判定
+		auto _pDropItem = std::dynamic_pointer_cast<C_KanjiDropItem>(obj);
+
+		//漢字ドロップアイテム以外は拾得対象外なのでスキップ
+		if (!_pDropItem) { continue; }
+
+		//手持ちストックに空きがある場合のみ、漢字を拾いアイテム側を消滅させる
+		if (PickupKanji(_pDropItem->GetKanjiID()))
+		{
+			_pDropItem->OnHit();
+		}
+
+		//ストックが満杯で拾えなかった場合はアイテムを消さずそのまま残す
+	}
 }

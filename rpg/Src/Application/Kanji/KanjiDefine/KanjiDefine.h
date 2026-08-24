@@ -27,6 +27,7 @@ struct KanjiMasterData
 	KanjiAttribute	attribute;		//Noneなら無属性漢字
 	int				baseScore;		//スコア計算のベース値
 	std::string		modelKeyword;	//AssetManagerに登録されている3Dモデルのキーワード
+	std::string		iconTexKeyword; //AssetManagerに登録されているUIアイコン用テクスチャのキーワードを追加
 };
 
 //部首（※未使用）

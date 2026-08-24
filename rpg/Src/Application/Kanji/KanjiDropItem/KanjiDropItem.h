@@ -13,6 +13,7 @@ public:
 	void Init()		override;	//モデルロード処理
 	void Update()	override;	//更新処理
 	void DrawLit()	override;	//描画処理
+	void OnHit()	override;	//衝突処理
 
 	//このアイテムが何の漢字かを外部からセットする処理
 	void SetKanjiID(KanjiID a_kanji) { m_kanjiID = a_kanji; }
@@ -22,6 +23,9 @@ public:
 
 	//生成する際のY軸方向を少し上に補正するための定数
 	static constexpr float KANJI_SPAWN_OFFSET_Y = 0.5f;
+
+	//プレイヤーとの当たり判定に使うスフィアの半径
+	static constexpr float KANJI_PICKUP_RADIUS = 0.5f;
 
 private:
 

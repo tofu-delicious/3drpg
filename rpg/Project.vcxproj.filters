@@ -136,6 +136,12 @@
     <Filter Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner">
       <UniqueIdentifier>{e485dfc5-1f76-419d-a40b-706e9015b3ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\GameObject\UI">
+      <UniqueIdentifier>{97ed646f-086c-4ed7-a898-bf3ab80e70be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\GameObject\UI\KanjiStockUI">
+      <UniqueIdentifier>{39456bd4-0b94-45ba-bf39-107f419ec100}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -369,6 +375,9 @@
     <ClInclude Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner\EnemySpawner.h">
       <Filter>Src\Application\GameObject\Charactor\Enemy\EnemySpawner</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\UI\KanjiStockUI\KanjiStockUI.h">
+      <Filter>Src\Application\GameObject\UI\KanjiStockUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -571,6 +580,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\GameObject\Charactor\Enemy\EnemySpawner\EnemySpawner.cpp">
       <Filter>Src\Application\GameObject\Charactor\Enemy\EnemySpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\UI\KanjiStockUI\KanjiStockUI.cpp">
+      <Filter>Src\Application\GameObject\UI\KanjiStockUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
