@@ -5,7 +5,14 @@
 
 void C_Player::Init()
 {
+	//モデルデータ取得
 	m_spModel = C_AssetManager::Instance().GetModel("Player");
+
+	//アニメーション再生用のモデルワークを生成
+	m_spModelWork = std::make_shared<KdModelWork>(m_spModel);
+
+	//初期状態として待機アニメーションを再生
+	ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");
 
 	//デバッグスフィア表示
 	if (!m_pDebugWire) m_pDebugWire = std::make_unique<KdDebugWireFrame>();
@@ -14,6 +21,8 @@ void C_Player::Init()
 void C_Player::Update()
 {
 	MovePlayer();		//移動処理
+
+	UpdateAnimation();	//アニメーションを1フレーム進める処理
 
 	UpdateMatrix();		//行列処理
 }
@@ -27,7 +36,11 @@ void C_Player::PostUpdate()
 
 void C_Player::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
+	//アニメーション反映後のモデルワークを描画
+	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModelWork, m_mWorld);
+
+	//静的モデルは描画しない
+	//KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel, m_mWorld);
 }
 
 void C_Player::MovePlayer()
@@ -41,6 +54,16 @@ void C_Player::MovePlayer()
 	if (GetAsyncKeyState('A')) { _moveVec.x = -1.0f; }
 	if (GetAsyncKeyState('W')) { _moveVec.z = 1.0f; }
 	if (GetAsyncKeyState('S')) { _moveVec.z = -1.0f; }
+
+	//移動入力の有無でアニメーションを切り替える
+	if (_moveVec == Math::Vector3::Zero)
+	{
+		ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");
+	}
+	else
+	{
+		ChangeAnimState(CharaAnimState::Walk, "Armature|Walk_Loop");
+	}
 
 	_moveVec.Normalize();
 
@@ -130,7 +153,7 @@ void C_Player::CheckKanjiPickup()
 	//拾得判定用の変数を宣言
 	KdCollider::SphereInfo sphere;
 	sphere.m_sphere.Center = m_pos + Math::Vector3{ 0,0.5f,0 };
-	sphere.m_sphere.Radius = 0.8f;
+	sphere.m_sphere.Radius = 0.3f;
 	sphere.m_type = KdCollider::TypeDamage;
 
 	//球に当たったオブジェクト情報を格納するリスト
