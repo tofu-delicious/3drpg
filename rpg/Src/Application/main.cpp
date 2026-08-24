@@ -320,6 +320,9 @@ void Application::Execute()
 		//=========================================
 
 		m_fpsController.Update();
+
+		std::string titleBar = "漢字戦記 FPS:" + std::to_string(m_fpsController.m_nowfps);
+		SetWindowTextA(m_window.GetWndHandle(), titleBar.c_str());
 	}
 
 	//===================================================================
