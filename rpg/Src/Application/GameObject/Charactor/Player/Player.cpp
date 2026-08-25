@@ -12,7 +12,8 @@ void C_Player::Init()
 	m_spModelWork = std::make_shared<KdModelWork>(m_spModel);
 
 	//初期状態として待機アニメーションを再生
-	ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");
+	//ChangeAnimState(CharaAnimState::Idle, "Idle_Loop");
+	ChangeAnimState(CharaAnimState::Idle, "Armature|Armature|Idle_Loop");
 
 	//デバッグスフィア表示
 	if (!m_pDebugWire) m_pDebugWire = std::make_unique<KdDebugWireFrame>();
@@ -52,19 +53,20 @@ void C_Player::MovePlayer()
 	Math::Vector3	_nowPos = GetPos();
 
 	Math::Vector3	_moveVec = Math::Vector3::Zero;
-	if (GetAsyncKeyState('D')) { _moveVec.x = 1.0f; }
-	if (GetAsyncKeyState('A')) { _moveVec.x = -1.0f; }
-	if (GetAsyncKeyState('W')) { _moveVec.z = 1.0f; }
-	if (GetAsyncKeyState('S')) { _moveVec.z = -1.0f; }
+	if (GetAsyncKeyState('D') & 0x8000) { _moveVec.x = 1.0f; }
+	if (GetAsyncKeyState('A') & 0x8000) { _moveVec.x = -1.0f; }
+	if (GetAsyncKeyState('W') & 0x8000) { _moveVec.z = 1.0f; }
+	if (GetAsyncKeyState('S') & 0x8000) { _moveVec.z = -1.0f; }
 
 	//移動入力の有無でアニメーションを切り替える
 	if (_moveVec == Math::Vector3::Zero)
 	{
-		ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");	//Player
+		//ChangeAnimState(CharaAnimState::Idle, "Idle_Loop");	//Player
+		ChangeAnimState(CharaAnimState::Idle, "Armature|Armature|Idle_Loop");	//Player
 	}
 	else
 	{
-		ChangeAnimState(CharaAnimState::Run, "Armature|Walk_Loop");		//Player
+		ChangeAnimState(CharaAnimState::Run, "Armature|Armature|Sprint_Loop");		//Player
 	}
 
 	_moveVec.Normalize();
@@ -83,8 +85,11 @@ void C_Player::MovePlayer()
 void C_Player::UpdateMatrix()
 {
 	//カメラの回転を反映しないとき（拡縮 + 初期回転）
-	Math::Matrix _scale = Math::Matrix::CreateScale(17.0f);
+	Math::Matrix _scale = Math::Matrix::CreateScale(1.0f);
 	Math::Matrix _rot   = Math::Matrix::Identity;
+
+	//モデルが正面を向くのを補正する
+	//Math::Matrix _modelFix = Math::Matrix::CreateRotationY(DirectX::XM_PI);
 
 	//カメラの回転を反映するとき（拡縮 + カメラ回転）
 	const auto _spCamera = m_wpCamera.lock();
@@ -94,7 +99,7 @@ void C_Player::UpdateMatrix()
 	}
 
 	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
-	m_mWorld = _scale * _rot * _trans;
+	m_mWorld = _scale /** _modelFix*/ * _rot * _trans;
 }
 
 bool C_Player::PickupKanji(KanjiID a_kanji)

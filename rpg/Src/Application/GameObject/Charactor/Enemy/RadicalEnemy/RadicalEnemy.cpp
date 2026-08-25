@@ -29,7 +29,7 @@ void C_RadicalEnemy::Update()
 	UpdateAnimation();
 
 	//行列を更新しないと、初期位置にずっと敵が生成されてしまう
-	Math::Matrix _scale = Math::Matrix::CreateScale(17.0f);
+	Math::Matrix _scale = Math::Matrix::CreateScale(1.0f);
 	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
 	m_mWorld = _scale * _trans;
 }
