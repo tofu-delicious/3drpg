@@ -39,6 +39,9 @@ public:
 	//現在のスコア倍率の取得処理
 	float GetKanjiScoreMultiplier()const { return m_kanjiComboManager.GetScoreMultiplier(); }
 
+	//地面判定
+	void CheckGround();
+
 	//スフィア判定（敵への攻撃判定）
 	void CheckSphere();
 

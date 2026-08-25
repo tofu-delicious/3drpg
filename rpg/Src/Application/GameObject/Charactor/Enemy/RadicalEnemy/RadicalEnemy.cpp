@@ -6,6 +6,8 @@
 void C_RadicalEnemy::Init()
 {
 	m_spModel = C_AssetManager::Instance().GetModel("RadicalEnemy");
+
+	m_spModelWork = std::make_shared<KdModelWork>(m_spModel);
 	
 	m_mWorld = Math::Matrix::Identity;
 
@@ -22,6 +24,10 @@ void C_RadicalEnemy::Init()
 
 void C_RadicalEnemy::Update()
 {
+	ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");
+
+	UpdateAnimation();
+
 	//行列を更新しないと、初期位置にずっと敵が生成されてしまう
 	Math::Matrix _scale = Math::Matrix::CreateScale(17.0f);
 	Math::Matrix _trans = Math::Matrix::CreateTranslation(m_pos);
@@ -30,7 +36,8 @@ void C_RadicalEnemy::Update()
 
 void C_RadicalEnemy::DrawLit()
 {
-	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel,m_mWorld);
+	KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModelWork, m_mWorld);
+	//KdShaderManager::Instance().m_StandardShader.DrawModel(*m_spModel,m_mWorld);
 }
 
 void C_RadicalEnemy::OnHit()

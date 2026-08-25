@@ -4,7 +4,7 @@ Texture Tex_Mizu Asset/Textures/GameScene/mizu.png
 Texture Tex_Ki Asset/Textures/GameScene/ki.png
 Texture Tex_Tsuki Asset/Textures/GameScene/tsuki.png
 Model Ground Asset/Models/Ground/Ground/Terrain.gltf
-Model Player Asset/Models/Player/Player/Player.gltf
+Model Player Asset/Models/Player/Player/Player2.gltf
 Model RadicalEnemy Asset/Models/RadicalEnemy/RadicalEnemy/RadicalEnemy.gltf
 Model ElementEnemy Asset/Models/ElementEnemy/ElementEnemy/ElementEnemy.gltf
 Model Model_Hi Asset/Models/Kanji/Kanji/Hi.gltf

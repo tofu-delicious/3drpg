@@ -98,7 +98,7 @@ void Application::KdBeginDraw(bool usePostProcess)
 void Application::KdPostDraw()
 {
 	// Imguiのレンダリング（ImGui表示・非表示設定はここ）
-	KdDebugGUI::Instance().GuiProcess();
+	//KdDebugGUI::Instance().GuiProcess();
 
 	// BackBuffer -> 画面表示
 	KdDirect3D::Instance().WorkSwapChain()->Present(0, 0);
@@ -216,7 +216,7 @@ bool Application::Init(int w, int h)
 	C_AssetManager::Instance().ReadFile("AssetData.txt");
 
 	// 例えばカーソルを消したい場合
-	//ShowCursor(false);
+	ShowCursor(false);
 
 	return true;
 }

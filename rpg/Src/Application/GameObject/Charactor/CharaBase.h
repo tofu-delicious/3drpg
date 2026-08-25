@@ -7,6 +7,9 @@ enum class CharaAnimState
 	None,	//未初期化
 	Idle,	//待機
 	Walk,	//歩行
+	Run,	//走行
+	Attack,	//攻撃
+	Dying,	//死亡
 };
 
 class C_CharaBase :public C_ObjectBase

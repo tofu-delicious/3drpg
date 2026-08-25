@@ -29,6 +29,8 @@ void C_Player::Update()
 
 void C_Player::PostUpdate()
 {
+	CheckGround();		//地面判定
+
 	CheckSphere();		//スフィア判定
 	
 	CheckKanjiPickup();	//漢字ドロップアイテムの拾得判定
@@ -58,11 +60,11 @@ void C_Player::MovePlayer()
 	//移動入力の有無でアニメーションを切り替える
 	if (_moveVec == Math::Vector3::Zero)
 	{
-		ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");
+		ChangeAnimState(CharaAnimState::Idle, "Armature|Idle_Loop");	//Player
 	}
 	else
 	{
-		ChangeAnimState(CharaAnimState::Walk, "Armature|Walk_Loop");
+		ChangeAnimState(CharaAnimState::Run, "Armature|Walk_Loop");		//Player
 	}
 
 	_moveVec.Normalize();
@@ -121,6 +123,56 @@ void C_Player::UseKanjiStock(int a_index)
 	//ここにコンボ更新・属性ダメージ・レベル効果発動を呼び出す
 }
 
+void C_Player::CheckGround()
+{
+	//地面判定用のレイ情報を宣言している
+	KdCollider::RayInfo _rayInfo;
+
+	//レイの発射位置：現在のプレイヤー座標より少し上（地面にめり込んだ状態から判定を始めないため）
+	_rayInfo.m_pos = m_pos + Math::Vector3(0, 1.0f, 0);
+
+	//レイの発射方向：真下に向けて飛ばしている
+	_rayInfo.m_dir = Math::Vector3::Down;
+
+	//レイが届く距離を設定している（地面まで十分届く長さを確保）
+	_rayInfo.m_range = 1000.0f;
+
+	//当たり判定をしたいタイプを「地形」に設定している
+	_rayInfo.m_type = KdCollider::TypeGround;
+
+	//レイに当たったオブジェクトの詳細結果を格納するリストを宣言している
+	std::list<KdCollider::CollisionResult> _retRayList;
+
+	//シーン上の全オブジェクトに対してレイ判定を実行している
+	for (auto& obj : SceneManager::Instance().GetObjList())
+	{
+		obj->Intersects(_rayInfo, &_retRayList);
+	}
+
+	//一番近い地面のヒット情報を探すための変数を宣言している
+	float _maxOverlap = 0.0f;
+	Math::Vector3 _hitPos = {};
+	bool _isHit = false;
+
+	//ヒットリストの中から、プレイヤーに一番近い地面の座標を検索している
+	for (auto& ret : _retRayList)
+	{
+		//overlapDistanceが大きいほどレイの発射位置に近いヒットを意味する
+		if (_maxOverlap < ret.m_overlapDistance)
+		{
+			_maxOverlap = ret.m_overlapDistance;
+			_hitPos = ret.m_hitPos;
+			_isHit = true;
+		}
+	}
+
+	//地面にヒットしていれば、プレイヤーのY座標を地面の高さに固定している
+	if (_isHit)
+	{
+		m_pos.y = _hitPos.y;
+	}
+}
+
 void C_Player::CheckSphere()
 {
 	//スフィア判定用の変数を宣言
@@ -130,7 +182,7 @@ void C_Player::CheckSphere()
 	sphere.m_type = KdCollider::TypeDamage;
 
 	//デバッグ
-	m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius);
+	//m_pDebugWire->AddDebugSphere(sphere.m_sphere.Center, sphere.m_sphere.Radius);
 
 	//➀球に当たったオブジェクト情報を格納するリスト
 	std::list<KdCollider::CollisionResult> retSphereList;
